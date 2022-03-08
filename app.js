@@ -14,9 +14,19 @@ const fetchPokemon = () =>{
 
         Promise.all(pokemonPromises)
         .then(pokemons => {
-            console.log(pokemons)
+           // console.log(pokemons)
 
-            const listpomons = pokemons.reduce()
+            const listpomons = pokemons.reduce((accumulator, pokemon) =>{
+                accumulator += `<li class="card">
+                     
+               <h2 class="card-title">${pokemon.id}. ${pokemon.name} </h2> 
+                <p class="card-subtitle">${pokemon.types}</p>
+                   <li>`
+                return accumulator
+
+            }, '')
+
+            console.log(listpomons)
         })
 
 }
