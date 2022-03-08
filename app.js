@@ -16,11 +16,15 @@ const fetchPokemon = () =>{
         .then(pokemons => {
            // console.log(pokemons)
 
-            const listpomons = pokemons.reduce((accumulator, pokemon) =>{
-                accumulator += `<li class="card">
-                     
+            const listpokemons = pokemons.reduce((accumulator, pokemon) =>{ 
+                const types = pokemon.types.map(typeInfo => typeInfo.type.name)
+
+
+                accumulator += 
+                `<li class="card">
+                <img class="card-image ${types[0]}" alt="${pokemon.name}src="https://pokeres.bastionbot.org/imagens/pokemon/${pokemon.id}.png"/>
                <h2 class="card-title">${pokemon.id}. ${pokemon.name} </h2> 
-                <p class="card-subtitle">${pokemon.types}</p>
+                <p class="card-subtitle">${types.join('|')}</p>
                    <li>`
                 return accumulator
 
